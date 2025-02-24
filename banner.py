@@ -8,15 +8,16 @@ def retBanner(ip,port):
 		s = socket.socket()
 		s.connect((ip,port))
 		banner = s.recv(1024)
-		return banner
+		s.close()
+		return banner.decode("utf-8", errors = "ignore")
 	except:
-              	return
+		return
 
 def main():
-	ip = input("[*] Enter the target IP: ")
+	ip = input("[*] Enter the target ip: ")
 	for port in range(1,100):
 		banner = retBanner(ip,port)
 		if banner:
-			print("[+]" + ip + ": " + banner)
+			print("[*] " +  ip + "/" + str(port) + ": " + banner.strip())
 
 main()
