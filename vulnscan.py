@@ -15,10 +15,11 @@ def retBanner(ip,port):
 		return
 
 def checkVulns(banner, filename):
-	f = open(filename, "r")
-	for line in  f.readlines():
-		if line.strip("\n") in banner:
-			print("[+] Server is Vulnerable: " + banner.strip("\n"))
+	banner = banner.decode().strip("\n")
+	with open(filename, "r") as f:
+		for line in f:
+			if line.strip("\n") in banner:
+				print("[+] Server is Vulnerable: " + banner)
 
 def main():
 	if len(sys.argv) == 2:
@@ -37,7 +38,7 @@ def main():
 		for port in portlist:
 			banner = retBanner(ip,port)
 			if banner:
-				print("[+] " + ip + "/" + str(port) + " : " + banner)
+				print("[+] " + ip + "/" + str(port) + " : " + banner.decode().strip())
 				checkVulns(banner, filename)
 
 main()
