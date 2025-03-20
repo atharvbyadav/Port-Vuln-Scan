@@ -67,11 +67,11 @@ Each script serves a **unique role** in the scanning process.
 
 #### **Run Command:**  
 ```bash
-./ports.py -h <target-ip>
+./ports.py -H <target host> -p <target port>
 ```
 Example:  
 ```bash
-./ports.py -h 192.168.1.1
+./ports.py -H 192.168.1.1 -p 22,80,445
 ```
 
 🛠 **Use Case:** This script is useful for quickly checking which **standard ports** are open before conducting a detailed scan.  
@@ -87,11 +87,11 @@ Example:
 
 #### **Run Command:**  
 ```bash
-./ports2.py -h <target-ip>
+./ports2.py -H <target host> -p <target port>
 ```
 Example:  
 ```bash
-./ports2.py -h 192.168.1.1
+./ports2.py -H 192.168.1.1 -p 22,80,445
 ```
 
 🛠 **Use Case:** If you need to scan **a large number of ports quickly**, use `ports2.py`. The speed difference is especially noticeable for **remote servers** where latency is a concern.  
@@ -127,11 +127,11 @@ Example:
 ```
 2️⃣ **Scan open ports (fast multi-threaded scan)**  
 ```bash
-./ports2.py 192.168.1.1
+./ports2.py -H 192.168.1.1 -p 22,80,445
 ```
 3️⃣ **Perform vulnerability analysis on open ports**  
 ```bash
-./vulnscan.py 192.168.1.1
+./vulnscan.py -H 192.168.1.1
 ```
 
 ---
